@@ -1,10 +1,12 @@
+package e.commerce.fawry;
+
 import java.time.LocalDate;
 
-public class Cheese extends Product implements Expirable, Shippable {
+public class Biscuits extends Product implements Expirable, Shippable {
     private LocalDate expiryDate;
     private double weight;
 
-    public Cheese(String name, double price, int quantity, double weight, LocalDate expiryDate) {
+    public Biscuits(String name, double price, int quantity, double weight, LocalDate expiryDate) {
         super(name, price, quantity);
         this.expiryDate = expiryDate;
         this.weight = weight;

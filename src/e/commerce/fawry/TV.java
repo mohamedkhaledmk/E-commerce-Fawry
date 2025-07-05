@@ -1,3 +1,5 @@
+package e.commerce.fawry;
+
 public class TV extends Product implements Shippable {
     private double weight;
 

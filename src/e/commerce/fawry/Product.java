@@ -1,3 +1,5 @@
+package e.commerce.fawry;
+
 public class Product {
     private String name;
     private double price;
