@@ -1,14 +1,33 @@
 package e.commerce.fawry;
 
+import java.time.LocalDate;
+
 public class Test {
     public static void main(String[] args) {
-        Customer customer = new Customer("Abdullah", 1000.0);
+        Product cheese = new ExpirableShippableProduct("Cheese", 100, 5, 0.5, LocalDate.of(2025, 12, 1));
+        Product tv = new ShippableProduct("TV", 4000, 3, 6.0);
+        Product card = new Product("Scratch Card", 50, 10);
+        Product biscuits = new ExpirableShippableProduct("Biscuits", 150, 3, 0.7, LocalDate.of(2024, 12, 31));
 
-        System.out.println("Customer: " + customer.getName());
-        System.out.println("Initial Balance: " + customer.getBalance());
+        Customer customer = new Customer("Fatma", 5000);
+        Cart cart = new Cart();
 
-        customer.deduct(300.0);
+        try {
+            cart.add(cheese, 2);
+            cart.add(tv, 1);
+            cart.add(card, 1);
+            cart.add(biscuits, 1);
 
-        System.out.println("Balance after deduction: " + customer.getBalance());
+            CheckoutService.checkout(customer, cart);
+        } catch (Exception e) {
+            System.out.println("Checkout failed: " + e.getMessage());
+        }
+
+        // Show remaining stock
+        System.out.println("\nRemaining Stock:");
+        System.out.println(cheese.getName() + ": " + cheese.getQuantity());
+        System.out.println(tv.getName() + ": " + tv.getQuantity());
+        System.out.println(card.getName() + ": " + card.getQuantity());
+        System.out.println(biscuits.getName() + ": " + biscuits.getQuantity());
     }
 }

@@ -17,8 +17,7 @@ public class Cart {
 
         if (product instanceof Expirable && ((Expirable) product).isExpired())
             throw new IllegalArgumentException("Cannot add expired product: " + product.getName());
-
-        // Merge with existing quantity if already in cart
+        System.out.println( quantity);
         items.put(product, items.getOrDefault(product, 0) + quantity);
     }
 
